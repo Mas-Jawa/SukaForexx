@@ -51,7 +51,7 @@ const Beranda = ({ setCurrentPage }) => {
             transition={{ delay: 0.5 }}
             className="text-gray-300 text-lg"
           >
-            Platform IB Trading Forex Terpercaya di Indonesia
+            Platform Trading Forex Terpercaya di Indonesia
           </motion.p>
         </motion.section>
 
