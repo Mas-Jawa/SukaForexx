@@ -6,7 +6,7 @@ export const BROKER_LINKS = [
     name: 'Exness',
     url: 'https://www.exness.com', // GANTI DENGAN LINK IB EXNESS ANDA
     color: 'from-blue-600 to-blue-800',
-    logo: 'public/logos/exness.png'
+    logo: '/logos/exness.png'
   },
   {
     name: 'HFM',
