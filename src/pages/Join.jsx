@@ -123,8 +123,8 @@ const Join = () => {
             </div>
             
             <div className="bg-forex-primary/50 p-4 rounded-lg">
-              <h3 className="font-bold text-forex-gold mb-2">✅ Komisi IB</h3>
-              <p>Dapatkan komisi rebate dari setiap transaksi trading Anda.</p>
+              <h3 className="font-bold text-forex-gold mb-2">✅ Sinyal Gratis</h3>
+              <p>Dapatkan sinyal gratis yang di share di telegram.</p>
             </div>
           </div>
         </motion.section>
