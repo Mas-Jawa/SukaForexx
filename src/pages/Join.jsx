@@ -63,7 +63,7 @@ const Join = () => {
                 <div className="text-center">
                   <div className="w-20 h-20 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4 overflow-hidden">
                     <img 
-                      src={broker.logos} 
+                      src={broker.logo} 
                       alt={broker.name} 
                       className="w-full h-full object-contain"
                     />
