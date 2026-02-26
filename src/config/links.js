@@ -4,21 +4,21 @@
 export const BROKER_LINKS = [
   {
     name: 'Exness',
-    url: 'https://one.exnessonelink.com/a/f45n19j4pj?source=app', // GANTI DENGAN LINK IB EXNESS ANDA
+    url: 'https://www.exness.com', // GANTI DENGAN LINK IB EXNESS ANDA
     color: 'from-blue-600 to-blue-800',
-    logo: '/logos/exness.png'
+    logo: 'EX'
   },
   {
     name: 'HFM',
-    url: 'https://play.google.com/store/apps/details?id=com.hotforex.www.hotforex', // GANTI DENGAN LINK IB HFM ANDA
+    url: 'https://www.hfm.com', // GANTI DENGAN LINK IB HFM ANDA
     color: 'from-green-600 to-green-800',
-    logo: '/logos/hfm.png'
+    logo: 'HF'
   },
   {
     name: 'XM',
-    url: 'https://www.xmidbroker.org/referral?token=gMss6nBjTcx9ZpXIDeFp1w', // GANTI DENGAN LINK IB XM ANDA
+    url: 'https://www.xm.com', // GANTI DENGAN LINK IB XM ANDA
     color: 'from-red-600 to-red-800',
-    logo: '/logos/xm.png'
+    logo: 'XM'
   },
 ];
 
