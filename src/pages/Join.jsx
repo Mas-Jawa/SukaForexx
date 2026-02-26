@@ -63,7 +63,7 @@ const Join = () => {
                 <div className="text-center">
                   <div className="w-20 h-20 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4 overflow-hidden">
                     <img 
-                      src={broker.logo} 
+                      src={broker.logos} 
                       alt={broker.name} 
                       className="w-full h-full object-contain"
                     />
@@ -127,8 +127,8 @@ const Join = () => {
             </div>
             
             <div className="bg-forex-primary/50 p-4 rounded-lg">
-              <h3 className="font-bold text-forex-gold mb-2">✅ Komisi IB</h3>
-              <p>Dapatkan komisi rebate dari setiap transaksi trading Anda.</p>
+              <h3 className="font-bold text-forex-gold mb-2">✅ Sinyal Gratis</h3>
+              <p>Dapatkan sinyal trading gratis yang di share di grub telegram.</p>
             </div>
           </div>
         </motion.section>
