@@ -9,6 +9,7 @@ const Header = ({ currentPage, setCurrentPage }) => {
     { name: 'Beranda', page: 'beranda' },
     { name: 'Join', page: 'join' },
     { name: 'Edukasi Trading', page: 'edukasi' },
+    { name: 'TradingView', page: 'tradingview' },
   ];
 
   return (
@@ -25,9 +26,11 @@ const Header = ({ currentPage, setCurrentPage }) => {
             whileHover={{ scale: 1.05 }}
             className="flex items-center gap-2"
           >
-            <div className="w-10 h-10 bg-gradient-to-br from-forex-gold to-yellow-500 rounded-lg flex items-center justify-center">
-              <span className="text-forex-primary font-bold text-xl">SF</span>
-            </div>
+            <img 
+              src="/logos/Logo.JPG" 
+              alt="SukaForex Logo" 
+              className="w-10 h-10 object-contain"
+            />
             <span className="text-xl font-bold gradient-text">SukaForex</span>
           </motion.div>
 
