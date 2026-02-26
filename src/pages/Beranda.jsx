@@ -6,72 +6,18 @@ const Beranda = ({ setCurrentPage }) => {
   const [isPlaying, setIsPlaying] = useState(false);
   const [isMuted, setIsMuted] = useState(true);
   const playerRef = useRef(null);
-  const playerInstanceRef = useRef(null);
 
   const youtubeVideoId = "GqVTW50s5Y8";
 
-  // Load YouTube Player API
-  useEffect(() => {
-    const tag = document.createElement('script');
-    tag.src = "https://www.youtube.com/iframe_api";
-    const firstScriptTag = document.getElementsByTagName('script')[0];
-    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-
-    window.onYouTubeIframeAPIReady = () => {
-      playerInstanceRef.current = new window.YT.Player('youtube-player', {
-        height: '1',
-        width: '1',
-        videoId: youtubeVideoId,
-        playerVars: {
-          'autoplay': 0,
-          'controls': 0,
-          'disablekb': 1,
-          'fs': 0,
-          'loop': 1,
-          'playlist': youtubeVideoId,
-          'playsinline': 1
-        },
-        events: {
-          'onReady': onPlayerReady,
-        }
-      });
-    };
-
-    return () => {
-      if (playerInstanceRef.current) {
-        playerInstanceRef.current.destroy();
-      }
-    };
-  }, []);
-
-  const onPlayerReady = (event) => {
-    playerInstanceRef.current = event.target;
-    if (isPlaying) {
-      event.target.playVideo();
-      event.target.setMute(isMuted);
-    }
-  };
-
   const toggleMusic = () => {
-    if (!playerInstanceRef.current) return;
-    
-    if (isPlaying) {
-      playerInstanceRef.current.pauseVideo();
-      setIsPlaying(false);
-    } else {
-      playerInstanceRef.current.playVideo();
-      playerInstanceRef.current.setMute(false);
-      setIsPlaying(true);
+    setIsPlaying(!isPlaying);
+    if (!isPlaying) {
       setIsMuted(false);
     }
   };
 
   const toggleMute = () => {
-    if (!playerInstanceRef.current) return;
-    
-    const newMutedState = !isMuted;
-    playerInstanceRef.current.setMute(newMutedState);
-    setIsMuted(newMutedState);
+    setIsMuted(!isMuted);
   };
 
   const containerVariants = {
@@ -103,7 +49,16 @@ const Beranda = ({ setCurrentPage }) => {
       <div className="container mx-auto max-w-6xl">
         {/* YouTube Player (Hidden) */}
         <div className="hidden">
-          <div id="youtube-player"></div>
+          <iframe
+            ref={playerRef}
+            width="1"
+            height="1"
+            src={`https://www.youtube.com/embed/${youtubeVideoId}?autoplay=${isPlaying ? 1 : 0}&mute=${isMuted ? 1 : 0}&loop=1&playlist=${youtubeVideoId}`}
+            title="Background Music"
+            frameBorder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowFullScreen
+          ></iframe>
         </div>
 
         {/* Music Controls */}
