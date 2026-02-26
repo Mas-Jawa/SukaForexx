@@ -6,19 +6,19 @@ export const BROKER_LINKS = [
     name: 'Exness',
     url: 'https://www.exness.com', // GANTI DENGAN LINK IB EXNESS ANDA
     color: 'from-blue-600 to-blue-800',
-    logo: 'EX'
+    logo: 'public/logos/exness.png'
   },
   {
     name: 'HFM',
     url: 'https://www.hfm.com', // GANTI DENGAN LINK IB HFM ANDA
     color: 'from-green-600 to-green-800',
-    logo: 'HF'
+    logo: 'public/logos/hfm.png'
   },
   {
     name: 'XM',
     url: 'https://www.xm.com', // GANTI DENGAN LINK IB XM ANDA
     color: 'from-red-600 to-red-800',
-    logo: 'XM'
+    logo: 'public/logos/xm.png'
   },
 ];
 
