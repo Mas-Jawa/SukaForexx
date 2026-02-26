@@ -5,6 +5,7 @@ import Header from './components/Header';
 import Beranda from './pages/Beranda';
 import Join from './pages/Join';
 import Edukasi from './pages/Edukasi';
+import TradingView from './pages/TradingView';
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -18,6 +19,8 @@ function App() {
         return <Join />;
       case 'edukasi':
         return <Edukasi />;
+      case 'tradingview':
+        return <TradingView />;
       default:
         return <Beranda setCurrentPage={setCurrentPage} />;
     }
