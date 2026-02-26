@@ -1,6 +1,18 @@
 import { motion } from 'framer-motion';
+import { useState } from 'react';
+import { Play, Pause } from 'lucide-react';
 
 const Beranda = ({ setCurrentPage }) => {
+  const [isPlaying, setIsPlaying] = useState(false);
+  const youtubeUrl = "https://www.youtube.com/watch?v=GqVTW50s5Y8";
+
+  const toggleMusic = () => {
+    setIsPlaying(!isPlaying);
+    if (!isPlaying) {
+      window.open(youtubeUrl, '_blank');
+    }
+  };
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -28,19 +40,35 @@ const Beranda = ({ setCurrentPage }) => {
       className="pt-20 pb-12 px-4"
     >
       <div className="container mx-auto max-w-6xl">
+        {/* Music Button */}
+        <motion.div
+          initial={{ opacity: 0, x: -50 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ delay: 0.3 }}
+          className="fixed top-24 right-4 z-30"
+        >
+          <motion.button
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.9 }}
+            onClick={toggleMusic}
+            className="bg-forex-gold text-forex-primary px-4 py-2 rounded-full shadow-lg flex items-center gap-2 font-bold"
+          >
+            {isPlaying ? <Pause size={20} /> : <Play size={20} />}
+            <span className="hidden sm:inline">{isPlaying ? 'Pause Music' : 'Nyalakan Music'}</span>
+          </motion.button>
+        </motion.div>
+
         {/* Welcome Section */}
         <motion.section
           variants={itemVariants}
           className="text-center mb-16 py-12"
         >
           <motion.h1
-            animate={{
-              x: [-100, 100, -100],
-            }}
+            initial={{ x: -100, opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
             transition={{
-              duration: 3,
-              repeat: Infinity,
-              ease: "easeInOut",
+              duration: 1,
+              ease: "easeOut",
             }}
             className="text-3xl md:text-5xl font-bold mb-4 gradient-text"
           >
@@ -52,7 +80,7 @@ const Beranda = ({ setCurrentPage }) => {
             transition={{ delay: 0.5 }}
             className="text-gray-300 text-lg"
           >
-            Platform Trading Forex Terpercaya di Indonesia
+            Platform IB Trading Forex Terpercaya di Indonesia
           </motion.p>
         </motion.section>
 
