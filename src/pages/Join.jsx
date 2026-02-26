@@ -61,8 +61,12 @@ const Join = () => {
                 className={`bg-gradient-to-br ${broker.color} rounded-2xl p-8 shadow-2xl block`}
               >
                 <div className="text-center">
-                  <div className="w-20 h-20 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <span className="text-3xl font-bold text-white">{broker.logo}</span>
+                  <div className="w-20 h-20 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4 overflow-hidden">
+                    <img 
+                      src={broker.logo} 
+                      alt={broker.name} 
+                      className="w-full h-full object-contain"
+                    />
                   </div>
                   <h3 className="text-2xl font-bold text-white mb-2">{broker.name}</h3>
                   <p className="text-white/80 text-sm">Klik untuk daftar</p>
