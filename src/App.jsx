@@ -13,6 +13,7 @@ function App() {
   const [currentPage, setCurrentPage] = useState('beranda');
   const [isPlaying, setIsPlaying] = useState(false);
   const [isMuted, setIsMuted] = useState(true);
+  const [isPlayerReady, setIsPlayerReady] = useState(false);
   const playerInstanceRef = useRef(null);
 
   const youtubeVideoId = "GqVTW50s5Y8";
@@ -36,10 +37,12 @@ function App() {
           'fs': 0,
           'loop': 1,
           'playlist': youtubeVideoId,
-          'playsinline': 1
+          'playsinline': 1,
+          'enablejsapi': 1
         },
         events: {
           'onReady': onPlayerReady,
+          'onStateChange': onPlayerStateChange
         }
       });
     };
@@ -53,32 +56,53 @@ function App() {
 
   const onPlayerReady = (event) => {
     playerInstanceRef.current = event.target;
-    if (isPlaying) {
-      event.target.playVideo();
-      event.target.setMute(isMuted);
+    setIsPlayerReady(true);
+    console.log('YouTube Player is ready');
+  };
+
+  const onPlayerStateChange = (event) => {
+    // Update playing state based on player state
+    if (event.data === window.YT.PlayerState.PLAYING) {
+      setIsPlaying(true);
+    } else if (event.data === window.YT.PlayerState.PAUSED || event.data === window.YT.PlayerState.ENDED) {
+      setIsPlaying(false);
     }
   };
 
   const toggleMusic = () => {
-    if (!playerInstanceRef.current) return;
+    if (!playerInstanceRef.current || !isPlayerReady) {
+      console.log('Player not ready yet');
+      return;
+    }
     
-    if (isPlaying) {
-      playerInstanceRef.current.pauseVideo();
+    const player = playerInstanceRef.current;
+    const playerState = player.getPlayerState();
+    
+    if (playerState === window.YT.PlayerState.PLAYING) {
+      player.pauseVideo();
       setIsPlaying(false);
     } else {
-      playerInstanceRef.current.playVideo();
-      playerInstanceRef.current.setMute(false);
+      player.playVideo();
+      // Unmute when playing
+      if (isMuted) {
+        player.unMute();
+        setIsMuted(false);
+      }
       setIsPlaying(true);
-      setIsMuted(false);
     }
   };
 
   const toggleMute = () => {
-    if (!playerInstanceRef.current) return;
+    if (!playerInstanceRef.current || !isPlayerReady) return;
     
-    const newMutedState = !isMuted;
-    playerInstanceRef.current.setMute(newMutedState);
-    setIsMuted(newMutedState);
+    const player = playerInstanceRef.current;
+    if (isMuted) {
+      player.unMute();
+      setIsMuted(false);
+    } else {
+      player.mute();
+      setIsMuted(true);
+    }
   };
 
   const renderPage = () => {
